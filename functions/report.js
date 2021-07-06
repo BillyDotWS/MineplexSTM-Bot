@@ -74,13 +74,14 @@ module.exports = async (bot) => {
 
                     // Calculate Total
                     let igtscore; let fpscore; let hfpscore; let srscore; let qotdscore; let sotwscore; let obsscore; let total;
-                    if (igt >= 5) { igtscore = 100; } else { igtscore = ((igt / 5) * 100) }
-                    if (fp >= 3) { fpscore = 100; } else { fpscore = ((fp / 3) * 100) }
-                    if (hfp >= 1) { hfpscore = 100; } else { hfpscore = ((hfp / 1) * 100) }
-                    if (weeklyR[1] >= 10) { srscore = 100; } else { srscore = ((weeklyR[1] / 10) * 100) }
-                    if (weeklyQ[1] >= 7) { qotdscore = 100; } else { qotdscore = ((weeklyQ[1] / 7) * 100) }
-                    if (sotw >= 10) { sotwscore = 100; } else { sotwscore = ((sotw / 10) * 100) }
-                    if (observation >= 10) { obsscore = 100; } else { obsscore = ((observation / 10) * 100) }
+                    igtscore = (igt >= 5 ? 100 : (igt / 5) * 100);
+                    fpscore = (fp >= 3 ? 100 : (fp / 3) * 100);
+                    hfpscore = (hfp >= 1 ? 100 : (hfp / 1) * 100);
+                    srscore = (weeklyR[1] >= 10 ? 100 : (weeklyR[1] / 10) * 100);
+                    qotdscore = (weeklyQ[1] >= 7 ? 100 : (weeklyQ[1] / 7) * 100);
+                    sotwscore = (sotw >= 10 ? 100 : (sotw / 10) * 100);
+                    obsscore = (observation >= 10 ? 100 : (observation / 10) * 100);
+
                     total = ((igtscore + fpscore + hfpscore + srscore + qotdscore + sotwscore + obsscore) / 7)
                     total = total.toFixed(2)
                     await format(igt, fp, hfp, weeklyR, weeklyQ, sotw, observation, total, igtscore, fpscore, hfpscore, srscore, moment().format('DD/MM/YYYY'))
